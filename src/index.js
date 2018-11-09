@@ -18,6 +18,21 @@ class LmNumber extends Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.value !== this.props.value) {
+            const input = this.props.value;
+            let rawValue = this.getRawValue(input);
+
+            if (!rawValue) {
+                rawValue = 0
+            }
+
+            this.setState({
+                rawValue
+            })
+        }
+    }
+
     onInputType(event) {
         const input = event.target.value;
         let rawValue = this.getRawValue(input);
