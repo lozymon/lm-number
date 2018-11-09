@@ -1,4 +1,4 @@
-# react-number
+# lm-number
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]

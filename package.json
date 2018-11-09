@@ -1,5 +1,5 @@
 {
-  "name": "react-number",
+  "name": "lm-number",
   "version": "1.0.1",
   "description": "react-number React component",
   "main": "lib/index.js",
@@ -33,7 +33,7 @@
   "author": "Kim Andre Furevikstrand <lozymon@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/lozymon/lm-number",
   "keywords": [
     "react-component"
   ]
