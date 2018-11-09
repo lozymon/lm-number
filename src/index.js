@@ -106,6 +106,8 @@ class ReactNumber extends Component {
                 onFocus={this.props.onFocus}
                 onClick={this.onClick}
                 onChange={this.onInputType}
+                onKeyUp={this.props.onKeyUp}
+                onKeyPress={this.props.onKeyPress}
                 value={this.formattedRawValue(this.state.rawValue)}
                 disabled={this.props.disabled}
                 autoFocus={this.props.autoFocus}
@@ -144,6 +146,8 @@ ReactNumber.propTypes = {
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
+    onKeyUp: PropTypes.func,
+    onKeyPress: PropTypes.func,
     precision: PropTypes.number,
     readOnly: PropTypes.bool,
     separator: PropTypes.string,
@@ -167,7 +171,11 @@ ReactNumber.defaultProps = {
     onBlur: () => {
     },
     onFocus: () => {
-    }
+    },
+    onKeyUp: () => {
+    },
+    onKeyPress: () => {
+    },
 };
 
 export default ReactNumber
