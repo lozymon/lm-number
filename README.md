@@ -1,7 +1,7 @@
 # lm-number
 
 [![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
+[![npm lm-number][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
 Describe react-number here.
