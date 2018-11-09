@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 
-class ReactNumber extends Component {
+class LmNumber extends Component {
     constructor(props) {
         super(props);
 
@@ -12,7 +12,7 @@ class ReactNumber extends Component {
         this.onClick = this.onClick.bind(this);
 
         this.state = {
-            rawValue: this.props.value,
+            rawValue: this.getRawValue(String(this.props.value)),
             tabIndex: this.props.tabIndex,
             readOnly: this.props.readOnly
         }
@@ -138,7 +138,7 @@ const removeOccurrences = (from, toRemove) => {
     return from.replace(re, '');
 };
 
-ReactNumber.propTypes = {
+LmNumber.propTypes = {
     id: PropTypes.string,
     autoFocus: PropTypes.bool,
     delimiter: PropTypes.string,
@@ -153,11 +153,14 @@ ReactNumber.propTypes = {
     separator: PropTypes.string,
     tabIndex: PropTypes.number,
     unit: PropTypes.string,
-    value: PropTypes.number.isRequired,
+    value: PropTypes.oneOfType([
+        PropTypes.string.isRequired,
+        PropTypes.number.isRequired,
+    ]),
     className: PropTypes.string,
 };
 
-ReactNumber.defaultProps = {
+LmNumber.defaultProps = {
     value: 0,
     precision: 2,
     separator: '.',
@@ -178,4 +181,4 @@ ReactNumber.defaultProps = {
     },
 };
 
-export default ReactNumber
+export default LmNumber

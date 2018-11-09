@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 
-import ReactNumber from '../../src'
+import LmNumber from '../../src'
 
 class Demo extends Component {
   state = {
-    value: 1231,
+    value: '123',
   };
 
   onChange = (value) => {
@@ -15,7 +15,7 @@ class Demo extends Component {
   render() {
     return <div>
       <h1>react-number Demo</h1>
-      <ReactNumber 
+      <LmNumber
         name="react-number"
         precision={2}
         unit="R$"
