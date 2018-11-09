@@ -1,7 +1,7 @@
 {
   "name": "lm-number",
   "version": "1.0.4",
-  "description": "react-number React component",
+  "description": "lm-number a React component",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -35,6 +35,10 @@
   "license": "MIT",
   "repository": "https://github.com/lozymon/lm-number",
   "keywords": [
-    "react-component"
+    "react-component",
+    "lm-number",
+    "number",
+    "react",
+    "component"
   ]
 }
