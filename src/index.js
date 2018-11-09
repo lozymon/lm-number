@@ -56,9 +56,9 @@ class LmNumber extends Component {
         const {delimiter, separator, unit, maxLength} = this.props;
         let result = displayedValue;
 
-        result = removeOccurrences(result, delimiter);
-        result = removeOccurrences(result, separator);
-        result = removeOccurrences(result, unit);
+        result = this.removeOccurrences(result, delimiter);
+        result = this.removeOccurrences(result, separator);
+        result = this.removeOccurrences(result, unit);
 
         let intValue = Number(result);
 
@@ -76,7 +76,7 @@ class LmNumber extends Component {
 
         if (result.length < minChars) {
             const leftZeroesToAdd = minChars - result.length;
-            result = `${repeatZeroes(leftZeroesToAdd)}${result}`;
+            result = `${this.repeatZeroes(leftZeroesToAdd)}${result}`;
         }
 
         let beforeSeparator = result.slice(0, result.length - this.props.precision);
@@ -107,6 +107,17 @@ class LmNumber extends Component {
         return result;
     }
 
+
+    repeatZeroes(times) {
+        return (new Array(times+1)).join('0')
+    }
+
+    removeOccurrences(from, toRemove) {
+        toRemove = toRemove.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+        const re = new RegExp(toRemove, 'g');
+        return String(from).replace(re, '');
+    }
+
     onClick() {
         const {rawValue} = this.state;
         const len = this.formattedRawValue(rawValue).length * 2;
@@ -130,22 +141,6 @@ class LmNumber extends Component {
         )
     }
 }
-
-const repeatZeroes = (times) => {
-    let result = '';
-
-    for (let i = 0; i < times; i++) {
-        result += '0'
-    }
-
-    return result
-};
-
-const removeOccurrences = (from, toRemove) => {
-    toRemove = toRemove.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
-    const re = new RegExp(toRemove, 'g');
-    return String(from).replace(re, '');
-};
 
 LmNumber.propTypes = {
     maxLength: PropTypes.number,
