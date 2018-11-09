@@ -117,9 +117,10 @@ class LmNumber extends Component {
     }
 
     render() {
+        const { onChange, onClick, value, ...newProps } = this.props;
         return (
             <input
-                {...this.props}
+                {...newProps}
                 ref={this.inputRef}
                 onClick={this.onClick}
                 onChange={this.onInputType}
