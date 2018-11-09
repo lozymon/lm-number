@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 class ReactNumber extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.inputRef = React.createRef();
-    this.onInputType = this.onInputType.bind(this)
-    this.formattedRawValue = this.formattedRawValue.bind(this)
-    this.getRawValue = this.getRawValue.bind(this)
-    this.onFocus = this.onFocus.bind(this)
+    this.onInputType = this.onInputType.bind(this);
+    this.formattedRawValue = this.formattedRawValue.bind(this);
+    this.getRawValue = this.getRawValue.bind(this);
 
     this.state = {
       rawValue: this.props.value,
