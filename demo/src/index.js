@@ -17,7 +17,7 @@ class Demo extends Component {
       <h1>react-number Demo</h1>
       <LmNumber
         name="react-number"
-        precision={2}
+        precision={0}
         unit="R$"
         value={this.state.value} 
         onChange={this.onChange} 

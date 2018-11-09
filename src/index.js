@@ -12,7 +12,7 @@ class LmNumber extends Component {
         this.onClick = this.onClick.bind(this);
 
         this.state = {
-            rawValue: this.getRawValue(String(this.props.value)),
+            rawValue: this.getRawValue(this.props.value),
             tabIndex: this.props.tabIndex,
             readOnly: this.props.readOnly
         }
@@ -92,7 +92,12 @@ class LmNumber extends Component {
             withDots = withDots.substring(0, withDots.length - 1);
             beforeSeparator = withDots
         }
-        result = beforeSeparator + this.props.separator + afterSeparator;
+
+        if (this.props.precision > 1) {
+            result = beforeSeparator + this.props.separator + afterSeparator;
+        } else {
+            result = beforeSeparator;
+        }
 
         if (this.props.unit) {
             result = `${this.props.unit} ${result}`;
@@ -137,7 +142,7 @@ const repeatZeroes = (times) => {
 const removeOccurrences = (from, toRemove) => {
     toRemove = toRemove.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
     const re = new RegExp(toRemove, 'g');
-    return from.replace(re, '');
+    return String(from).replace(re, '');
 };
 
 LmNumber.propTypes = {
