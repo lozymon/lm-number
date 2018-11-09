@@ -107,7 +107,6 @@ class LmNumber extends Component {
         return result;
     }
 
-
     repeatZeroes(times) {
         return (new Array(times+1)).join('0')
     }
@@ -118,14 +117,17 @@ class LmNumber extends Component {
         return String(from).replace(re, '');
     }
 
-    onClick() {
+    onClick(event) {
         const {rawValue} = this.state;
+        const {onClick} = this.props;
         const len = this.formattedRawValue(rawValue).length * 2;
 
         setTimeout(() => {
             const element = this.inputRef.current;
             element.setSelectionRange(len, len);
         }, 10);
+
+        onClick && onClick(event);
     }
 
     render() {
