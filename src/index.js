@@ -99,24 +99,11 @@ class LmNumber extends Component {
     render() {
         return (
             <input
+                {...this.props}
                 ref={this.inputRef}
-                id={this.props.id}
-                className={this.props.className}
-                onBlur={this.props.onBlur}
-                onFocus={this.props.onFocus}
                 onClick={this.onClick}
                 onChange={this.onInputType}
-                onKeyUp={this.props.onKeyUp}
-                onKeyPress={this.props.onKeyPress}
                 value={this.formattedRawValue(this.state.rawValue)}
-                disabled={this.props.disabled}
-                autoFocus={this.props.autoFocus}
-                tabIndex={this.state.tabIndex}
-                readOnly={this.state.readOnly}
-                autoComplete={this.props.autoComplete}
-                autoCorrect={this.props.autoCorrect}
-                name={this.props.name}
-                placeholder={this.props.placeholder}
             />
         )
     }
@@ -139,25 +126,15 @@ const removeOccurrences = (from, toRemove) => {
 };
 
 LmNumber.propTypes = {
-    id: PropTypes.string,
-    autoFocus: PropTypes.bool,
     delimiter: PropTypes.string,
     disabled: PropTypes.bool,
-    onChange: PropTypes.func,
-    onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    onKeyUp: PropTypes.func,
-    onKeyPress: PropTypes.func,
     precision: PropTypes.number,
-    readOnly: PropTypes.bool,
     separator: PropTypes.string,
-    tabIndex: PropTypes.number,
     unit: PropTypes.string,
     value: PropTypes.oneOfType([
         PropTypes.string.isRequired,
         PropTypes.number.isRequired,
     ]),
-    className: PropTypes.string,
 };
 
 LmNumber.defaultProps = {
@@ -166,19 +143,6 @@ LmNumber.defaultProps = {
     separator: '.',
     delimiter: ',',
     unit: '',
-    disabled: false,
-    autoFocus: false,
-    className: '',
-    onChange: () => {
-    },
-    onBlur: () => {
-    },
-    onFocus: () => {
-    },
-    onKeyUp: () => {
-    },
-    onKeyPress: () => {
-    },
 };
 
 export default LmNumber
