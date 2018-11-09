@@ -19,7 +19,7 @@ class LmNumber extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.value !== this.props.value) {
+        if (prevProps.value !== this.props.value) {
             const input = this.props.value;
             let rawValue = this.getRawValue(input);
 
@@ -53,15 +53,16 @@ class LmNumber extends Component {
     }
 
     getRawValue(displayedValue) {
+        const {delimiter, separator, unit, maxLength} = this.props;
         let result = displayedValue;
 
-        result = removeOccurrences(result, this.props.delimiter);
-        result = removeOccurrences(result, this.props.separator);
-        result = removeOccurrences(result, this.props.unit);
+        result = removeOccurrences(result, delimiter);
+        result = removeOccurrences(result, separator);
+        result = removeOccurrences(result, unit);
 
         let intValue = Number(result);
 
-        if (intValue < Number.MAX_SAFE_INTEGER + 1) {
+        if (intValue < Number.MAX_SAFE_INTEGER + 1 && String(intValue).length <= maxLength) {
             return intValue
         }
 
@@ -117,10 +118,10 @@ class LmNumber extends Component {
     }
 
     render() {
-        const { onChange, onClick, value, ...newProps } = this.props;
         return (
             <input
-                {...newProps}
+                {...this.props}
+                maxLength="524288"
                 ref={this.inputRef}
                 onClick={this.onClick}
                 onChange={this.onInputType}
@@ -147,6 +148,7 @@ const removeOccurrences = (from, toRemove) => {
 };
 
 LmNumber.propTypes = {
+    maxLength: PropTypes.number,
     delimiter: PropTypes.string,
     disabled: PropTypes.bool,
     precision: PropTypes.number,
@@ -159,6 +161,7 @@ LmNumber.propTypes = {
 };
 
 LmNumber.defaultProps = {
+    maxLength: 16,
     value: 0,
     precision: 2,
     separator: '.',
