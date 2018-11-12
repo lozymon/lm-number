@@ -12,7 +12,7 @@ class LmNumber extends Component {
         this.onClick = this.onClick.bind(this);
 
         this.state = {
-            rawValue: this.getRawValue(this.props.value),
+            rawValue: this.getRawValue(this.getValue()),
             tabIndex: this.props.tabIndex,
             readOnly: this.props.readOnly
         }
@@ -20,7 +20,7 @@ class LmNumber extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.value !== this.props.value) {
-            const input = this.props.value;
+            const input = this.getValue();
             let rawValue = this.getRawValue(input);
 
             if (!rawValue) {
@@ -32,6 +32,10 @@ class LmNumber extends Component {
             })
         }
     }
+
+    getValue = () => {
+        return Number(this.props.value).toFixed(this.props.precision);
+    };
 
     onInputType(event) {
         const input = event.target.value;
@@ -48,8 +52,15 @@ class LmNumber extends Component {
     }
 
     notifyParentWithRawValue(rawValue) {
+        const {delimiter, unit, separator} = this.props;
         let display = this.formattedRawValue(rawValue);
-        this.props.onChange(rawValue, display)
+        // this.props.onChange(rawValue, display)
+
+        display = this.removeOccurrences(display, delimiter);
+        display = this.removeOccurrences(display, unit);
+        display = this.removeOccurrences(display, " ");
+        // display = this.removeOccurrences(display, separator);
+        this.props.onChange(display)
     }
 
     getRawValue(displayedValue) {

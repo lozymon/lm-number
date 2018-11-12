@@ -14,7 +14,7 @@ class Demo extends Component {
 
     render() {
         return <div>
-            <h1>react-number Demo</h1>
+            <h1>lm-number Demo</h1>
             <LmNumber
                 maxLength={8}
                 name="react-number"
@@ -23,6 +23,7 @@ class Demo extends Component {
                 value={this.state.value}
                 onChange={this.onChange}
             />
+            <button onClick={() => this.setState({value:432.2})}>432</button>
         </div>
     }
 }
