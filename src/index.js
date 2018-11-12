@@ -53,12 +53,21 @@ class LmNumber extends Component {
     }
 
     getRawValue(displayedValue) {
-        const {delimiter, separator, unit, maxLength} = this.props;
+        const {delimiter, separator, unit, maxLength, precision} = this.props;
         let result = displayedValue;
 
         result = this.removeOccurrences(result, delimiter);
-        result = this.removeOccurrences(result, separator);
         result = this.removeOccurrences(result, unit);
+
+        result = Number(result).toFixed(precision);
+        const split = result.split(separator);
+        const length = (split[1] && String(split[1]).length) || 0;
+        if (length < precision) {
+            const zeroes = this.repeatZeroes(precision - length);
+            result = result + zeroes;
+        }
+
+        result = this.removeOccurrences(result, separator);
 
         let intValue = Number(result);
 
