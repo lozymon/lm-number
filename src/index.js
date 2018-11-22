@@ -11,10 +11,16 @@ class LmNumber extends Component {
         this.getRawValue = this.getRawValue.bind(this);
         this.onClick = this.onClick.bind(this);
 
+        const rawValue = this.getRawValue(this.getValue());
+
         this.state = {
-            rawValue: this.getRawValue(this.getValue()),
+            rawValue,
             tabIndex: this.props.tabIndex,
             readOnly: this.props.readOnly
+        };
+
+        if (rawValue === 0) {
+            this.notifyParentWithRawValue(rawValue);
         }
     }
 
@@ -24,7 +30,7 @@ class LmNumber extends Component {
             let rawValue = this.getRawValue(input);
 
             if (!rawValue) {
-                rawValue = 0
+                rawValue = 0;
             }
 
             this.setState({
@@ -52,14 +58,13 @@ class LmNumber extends Component {
     }
 
     notifyParentWithRawValue(rawValue) {
-        const {delimiter, unit, separator} = this.props;
+        const {delimiter, unit} = this.props;
         let display = this.formattedRawValue(rawValue);
-        // this.props.onChange(rawValue, display)
 
         display = this.removeOccurrences(display, delimiter);
         display = this.removeOccurrences(display, unit);
         display = this.removeOccurrences(display, " ");
-        // display = this.removeOccurrences(display, separator);
+
         this.props.onChange(display)
     }
 

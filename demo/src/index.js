@@ -5,7 +5,7 @@ import LmNumber from '../../src'
 
 class Demo extends Component {
     state = {
-        value: '123',
+        value: undefined,
     };
 
     onChange = (value) => {
