@@ -1,6 +1,6 @@
 {
   "name": "lm-number",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "lm-number a React component",
   "main": "lib/index.js",
   "module": "es/index.js",
