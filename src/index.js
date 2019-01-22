@@ -82,7 +82,7 @@ class LmNumber extends Component {
             return intValue
         }
 
-        return this.state.rawValue;
+        return this.state ? this.state.rawValue : 0;
     }
 
     formattedRawValue(rawValue) {
