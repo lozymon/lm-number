@@ -16,14 +16,14 @@ class Demo extends Component {
         return <div>
             <h1>lm-number Demo</h1>
             <LmNumber
-                maxLength={8}
+                maxLength={16}
                 name="react-number"
                 precision={2}
                 unit="R$"
                 value={this.state.value}
                 onChange={this.onChange}
             />
-            <button onClick={() => this.setState({value:432.2})}>432</button>
+            <button onClick={() => this.setState({value:9999999999999})}>9999999999999</button>
         </div>
     }
 }
